@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1C64861BDE30AE0005AC87 /* marimbaLoop.caf in Resources */ = {isa = PBXBuildFile; fileRef = CF1C64851BDE30AE0005AC87 /* marimbaLoop.caf */; };
 		CF3613291BDDD54C001400EE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3613281BDDD54C001400EE /* main.m */; };
 		CF36132C1BDDD54C001400EE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36132B1BDDD54C001400EE /* AppDelegate.m */; };
 		CF36132F1BDDD54C001400EE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36132E1BDDD54C001400EE /* ViewController.m */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF1C64851BDE30AE0005AC87 /* marimbaLoop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = marimbaLoop.caf; sourceTree = "<group>"; };
+		CF1C64871BDE3F7D0005AC87 /* drumLoop.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = drumLoop.caf; sourceTree = "<group>"; };
 		CF3613241BDDD54C001400EE /* AudioTest20151026.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioTest20151026.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF3613281BDDD54C001400EE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF36132A1BDDD54C001400EE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 		CF3613271BDDD54C001400EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF1C64851BDE30AE0005AC87 /* marimbaLoop.caf */,
+				CF1C64871BDE3F7D0005AC87 /* drumLoop.caf */,
 				CF3613281BDDD54C001400EE /* main.m */,
 			);
 			name = "Supporting Files";
@@ -245,6 +250,7 @@
 			files = (
 				CF3613371BDDD54C001400EE /* LaunchScreen.storyboard in Resources */,
 				CF3613341BDDD54C001400EE /* Assets.xcassets in Resources */,
+				CF1C64861BDE30AE0005AC87 /* marimbaLoop.caf in Resources */,
 				CF3613321BDDD54C001400EE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AudioTest20151026/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Homni.AudioTest20151026;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,6 +432,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AudioTest20151026/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Homni.AudioTest20151026;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -498,6 +506,7 @@
 				CF3613531BDDD54D001400EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CF3613541BDDD54D001400EE /* Build configuration list for PBXNativeTarget "AudioTest20151026Tests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +515,7 @@
 				CF3613561BDDD54D001400EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CF3613571BDDD54D001400EE /* Build configuration list for PBXNativeTarget "AudioTest20151026UITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +524,7 @@
 				CF3613591BDDD54D001400EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
