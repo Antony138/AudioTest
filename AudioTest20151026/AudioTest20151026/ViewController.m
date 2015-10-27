@@ -15,7 +15,6 @@
     AVAudioEngine *_testEngine;
     AVAudioPlayerNode *_marimbaPlayer;
     AVAudioPCMBuffer *_marimbaLoopBuffer;
-    AVAudioUnitDelay    *_delay;
     
     AVAudioPlayerNode   *_mixerOutputFilePlayer;
 }
@@ -30,13 +29,12 @@
     [super viewDidLoad];
     _marimbaPlayer = [[AVAudioPlayerNode alloc] init];
     _testEngine = [[AVAudioEngine alloc] init];
-    _delay = [[AVAudioUnitDelay alloc] init];
     _mixerOutputFilePlayer = [[AVAudioPlayerNode alloc] init];
     [_testEngine attachNode:_marimbaPlayer];
-    [_testEngine attachNode:_delay];
     [_testEngine attachNode:_mixerOutputFilePlayer];
     
     
+    // 创建播放的buffer
     NSError *error;
     NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"marimbaLoop" ofType:@"caf"]];
     AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
@@ -66,19 +64,24 @@
     AVAudioMixerNode *mainMixer = [_testEngine mainMixerNode];
     
     // establish a connection between nodes
-    
-    // marimba player -> delay -> main mixer
-    [_testEngine connect: _marimbaPlayer to:_delay format:_marimbaLoopBuffer.format];
-    [_testEngine connect:_delay to:mainMixer format:_marimbaLoopBuffer.format];
+    [_testEngine connect:_marimbaPlayer to:mainMixer format:_marimbaLoopBuffer.format];
     
     // node tap player
-    [_testEngine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
+//    [_testEngine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
 }
 
 
 - (IBAction)togglePlayMarimba:(UIButton *)sender {
     if (!self.marimbaPlayerIsPlaying) {
         [self startEngine];
+        
+        // 播放文件，只能播放一次，
+//        NSError *error;
+//        NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"marimbaLoop" ofType:@"caf"]];
+//        AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
+//        [_marimbaPlayer scheduleFile:marimbaLoopFile atTime:nil completionHandler:nil];
+        
+        // 播放buffer，可实现循环重复播放
         [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
         [_marimbaPlayer play];
     } else {
