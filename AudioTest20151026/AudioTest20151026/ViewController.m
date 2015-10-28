@@ -70,21 +70,27 @@
 //    [_testEngine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
 }
 
-
 - (IBAction)togglePlayMarimba:(UIButton *)sender {
     if (!self.marimbaPlayerIsPlaying) {
         [self startEngine];
         
-        // 播放文件，只能播放一次，
+        // 播放文件(AVAudioFile)，只能播放一次，
 //        NSError *error;
 //        NSString *path = [[NSBundle mainBundle] pathForResource:@"遇见" ofType:@"mp3"];
 //        NSURL *marimbaLoopURL = [NSURL fileURLWithPath:path];
 //        AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
 //        [_marimbaPlayer scheduleFile:marimbaLoopFile atTime:nil completionHandler:nil];
+ 
+
         
         // 播放buffer，可实现循环重复播放
         [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
         
+        // 设置5秒后播放
+//        double sampleRate = _marimbaLoopBuffer.format.sampleRate;
+//        double sampleTime = sampleRate * 5.0;
+//        AVAudioTime *futureTime = [AVAudioTime timeWithSampleTime:sampleTime atRate:sampleRate];
+//        [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
         
         [_marimbaPlayer play];
     } else {
