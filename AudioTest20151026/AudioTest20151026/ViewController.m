@@ -36,7 +36,7 @@
     
     // 创建播放的buffer
     NSError *error;
-    NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"marimbaLoop" ofType:@"caf"]];
+    NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"遇见" ofType:@"mp3"]];
     AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
     _marimbaLoopBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:[marimbaLoopFile processingFormat] frameCapacity:(AVAudioFrameCount)[marimbaLoopFile length]];
     NSAssert([marimbaLoopFile readIntoBuffer:_marimbaLoopBuffer error:&error], @"couldn't read marimbaLoopFile into buffer, %@", [error localizedDescription]);
@@ -66,7 +66,7 @@
     // establish a connection between nodes
     [_testEngine connect:_marimbaPlayer to:mainMixer format:_marimbaLoopBuffer.format];
     
-    // node tap player
+    // node tap player(监视器?)
 //    [_testEngine connect:_mixerOutputFilePlayer to:mainMixer format:[mainMixer outputFormatForBus:0]];
 }
 
@@ -77,12 +77,15 @@
         
         // 播放文件，只能播放一次，
 //        NSError *error;
-//        NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"marimbaLoop" ofType:@"caf"]];
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"遇见" ofType:@"mp3"];
+//        NSURL *marimbaLoopURL = [NSURL fileURLWithPath:path];
 //        AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
 //        [_marimbaPlayer scheduleFile:marimbaLoopFile atTime:nil completionHandler:nil];
         
         // 播放buffer，可实现循环重复播放
         [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
+        
+        
         [_marimbaPlayer play];
     } else {
         [_marimbaPlayer stop];
