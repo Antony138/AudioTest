@@ -18,6 +18,9 @@
     
     AVAudioPCMBuffer *_drumLoopBuffer;
     
+    // 第三个buffer(用于测试)
+    AVAudioPCMBuffer *_thirdBuffer;
+    
     AVAudioPlayerNode   *_mixerOutputFilePlayer;
 }
 
@@ -47,6 +50,12 @@
     AVAudioFile *drumLoopFile = [[AVAudioFile alloc] initForReading:drumLoopURL error:&error];
     _drumLoopBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:[drumLoopFile processingFormat] frameCapacity:(AVAudioFrameCount)[drumLoopFile length]];
     [drumLoopFile readIntoBuffer:_drumLoopBuffer error:&error];
+    
+    NSURL *thirdBufferURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"勇气" ofType:@"mp3"]];
+    AVAudioFile *thirdBufferFile = [[AVAudioFile alloc] initForReading:thirdBufferURL error:&error];
+    _thirdBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:[thirdBufferFile processingFormat] frameCapacity:(AVAudioFrameCount)[thirdBufferFile length]];
+    [thirdBufferFile readIntoBuffer:_thirdBuffer error:&error];
+    
     
     // make engine connections
     [self makeEngineConnections];
@@ -105,10 +114,13 @@
         // 2、(Interrupt with new buffer)第二个bufferoptions参数设置为AVAudioPlayerNodeBufferInterrupts，会打断前面播放的buffer，直接播放新buffer
         // ( Interrupt looping buffer after current loop finishes)AVAudioPlayerNodeBufferInterruptsAtLoop:等前面循环的buffer完整播完后，再打断，播放新buffer(测试过，好像不起作用)
         [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:nil completionHandler:nil];
-        [_marimbaPlayer scheduleBuffer:_drumLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
+        [_marimbaPlayer scheduleBuffer:_drumLoopBuffer atTime:nil options:nil completionHandler:nil];
         
+        
+        [_marimbaPlayer scheduleBuffer:_thirdBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
 
         [_marimbaPlayer play];
+        
     } else {
         [_marimbaPlayer stop];
     }
