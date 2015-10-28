@@ -16,6 +16,8 @@
     AVAudioPlayerNode *_marimbaPlayer;
     AVAudioPCMBuffer *_marimbaLoopBuffer;
     
+    AVAudioPCMBuffer *_drumLoopBuffer;
+    
     AVAudioPlayerNode   *_mixerOutputFilePlayer;
 }
 
@@ -36,11 +38,15 @@
     
     // 创建播放的buffer
     NSError *error;
-    NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"遇见" ofType:@"mp3"]];
+    NSURL *marimbaLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"marimbaLoop" ofType:@"caf"]];
     AVAudioFile *marimbaLoopFile = [[AVAudioFile alloc] initForReading:marimbaLoopURL error:&error];
     _marimbaLoopBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:[marimbaLoopFile processingFormat] frameCapacity:(AVAudioFrameCount)[marimbaLoopFile length]];
     NSAssert([marimbaLoopFile readIntoBuffer:_marimbaLoopBuffer error:&error], @"couldn't read marimbaLoopFile into buffer, %@", [error localizedDescription]);
     
+    NSURL *drumLoopURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"遇见" ofType:@"mp3"]];
+    AVAudioFile *drumLoopFile = [[AVAudioFile alloc] initForReading:drumLoopURL error:&error];
+    _drumLoopBuffer = [[AVAudioPCMBuffer alloc] initWithPCMFormat:[drumLoopFile processingFormat] frameCapacity:(AVAudioFrameCount)[drumLoopFile length]];
+    [drumLoopFile readIntoBuffer:_drumLoopBuffer error:&error];
     
     // make engine connections
     [self makeEngineConnections];
@@ -82,21 +88,30 @@
 //        [_marimbaPlayer scheduleFile:marimbaLoopFile atTime:nil completionHandler:nil];
  
 
-        
-        // 播放buffer，可实现循环重复播放
-        [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
-        
-        // 设置5秒后播放
+        // Loop single buffer
+        // 播放buffer，options参数选AVAudioPlayerNodeBufferLoops，实现buffer循环播放
+//        [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
+
+        // 设置播放时间:5秒后播放
 //        double sampleRate = _marimbaLoopBuffer.format.sampleRate;
 //        double sampleTime = sampleRate * 5.0;
 //        AVAudioTime *futureTime = [AVAudioTime timeWithSampleTime:sampleTime atRate:sampleRate];
 //        [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
         
+        
+        // 播放两个buffer,
+        // 播放两个buffer，通过设置不同的options，控制buffer的播放方式(1、是否循环；2、是否打断前面的buffer(循环))。
+        // 1、(Append new buffer)两个options参数设置为nil，两个buffer默认按顺序前后播放
+        // 2、(Interrupt with new buffer)第二个bufferoptions参数设置为AVAudioPlayerNodeBufferInterrupts，会打断前面播放的buffer，直接播放新buffer
+        // ( Interrupt looping buffer after current loop finishes)AVAudioPlayerNodeBufferInterruptsAtLoop:等前面循环的buffer完整播完后，再打断，播放新buffer(测试过，好像不起作用)
+        [_marimbaPlayer scheduleBuffer:_marimbaLoopBuffer atTime:nil options:nil completionHandler:nil];
+        [_marimbaPlayer scheduleBuffer:_drumLoopBuffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
+        
+
         [_marimbaPlayer play];
     } else {
         [_marimbaPlayer stop];
     }
- 
 }
 
 - (void)didReceiveMemoryWarning {
