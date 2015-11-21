@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,21 +15,36 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oal-UG-xTF">
-                                <rect key="frame" x="271" y="279" width="59" height="42"/>
+                                <rect key="frame" x="57" y="57" width="59" height="42"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="PLAY"/>
                                 <state key="selected" title="STOP"/>
                                 <connections>
-                                    <action selector="togglePlayMarimba:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gwW-hm-ols"/>
+                                    <action selector="togglePlayFirstSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fbb-Wc-Veu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFh-cn-JRa">
+                                <rect key="frame" x="20" y="109" width="35" height="36"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Left">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="leftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n08-PZ-h35"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTk-kK-UdD">
-                                <rect key="frame" x="391" y="282" width="47" height="36"/>
+                                <rect key="frame" x="116" y="109" width="47" height="36"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -43,8 +59,18 @@
                                     <action selector="rightButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ReA-Kc-z6Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFh-cn-JRa">
-                                <rect key="frame" x="175" y="282" width="35" height="36"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JP7-q2-YQp">
+                                <rect key="frame" x="285" y="57" width="59" height="42"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="PLAY"/>
+                                <state key="selected" title="STOP"/>
+                                <connections>
+                                    <action selector="togglePlaySecondSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KwC-4F-jqE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaT-qI-mrH">
+                                <rect key="frame" x="245" y="109" width="35" height="36"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -53,27 +79,114 @@
                                 </state>
                                 <state key="selected">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="leftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n08-PZ-h35"/>
+                                    <action selector="secondLeftButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MVF-Fe-soa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sqm-xg-Ybr">
+                                <rect key="frame" x="347" y="109" width="47" height="36"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Right">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="secondRightButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HhC-nt-Rem"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-1v-avd">
+                                <rect key="frame" x="62" y="26" width="48" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fo0-YX-AJ4">
+                                <rect key="frame" x="289" y="26" width="50" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单身情歌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7J-UC-SA2">
+                                <rect key="frame" x="11" y="143" width="52" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单眼皮女生" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnp-Ko-bhI">
+                                <rect key="frame" x="107" y="143" width="65" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="恋爱百分百" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQs-Cl-ggR">
+                                <rect key="frame" x="230" y="143" width="65" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男声" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ma1-EC-F9m">
+                                <rect key="frame" x="357" y="143" width="26" height="16"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oal-UG-xTF" firstAttribute="leading" secondItem="iFh-cn-JRa" secondAttribute="trailing" constant="61" id="1V1-5v-QEd"/>
-                            <constraint firstItem="oal-UG-xTF" firstAttribute="centerY" secondItem="iFh-cn-JRa" secondAttribute="centerY" id="1zw-ht-VoR"/>
-                            <constraint firstItem="TTk-kK-UdD" firstAttribute="leading" secondItem="oal-UG-xTF" secondAttribute="trailing" constant="61" id="Id7-mq-w64"/>
-                            <constraint firstItem="oal-UG-xTF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NOZ-XF-czo"/>
-                            <constraint firstItem="TTk-kK-UdD" firstAttribute="centerY" secondItem="iFh-cn-JRa" secondAttribute="centerY" id="YQu-Vb-V2u"/>
-                            <constraint firstItem="oal-UG-xTF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="i9d-Ey-t09"/>
+                            <constraint firstItem="iFh-cn-JRa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="1v0-RM-pJJ"/>
+                            <constraint firstItem="Ma1-EC-F9m" firstAttribute="top" secondItem="Sqm-xg-Ybr" secondAttribute="bottom" constant="-2" id="4p4-wU-cNl"/>
+                            <constraint firstItem="oal-UG-xTF" firstAttribute="top" secondItem="Jep-1v-avd" secondAttribute="bottom" constant="10" id="5cL-Ff-QPu"/>
+                            <constraint firstItem="nnp-Ko-bhI" firstAttribute="centerX" secondItem="TTk-kK-UdD" secondAttribute="centerX" id="7WM-3f-x88"/>
+                            <constraint firstItem="nnp-Ko-bhI" firstAttribute="top" secondItem="oal-UG-xTF" secondAttribute="bottom" constant="44" id="DTR-rw-Lzt"/>
+                            <constraint firstItem="YQs-Cl-ggR" firstAttribute="top" secondItem="JP7-q2-YQp" secondAttribute="bottom" constant="44" id="E4t-ZN-ePX"/>
+                            <constraint firstItem="JP7-q2-YQp" firstAttribute="top" secondItem="Fo0-YX-AJ4" secondAttribute="bottom" constant="10" id="LQ2-o7-dI3"/>
+                            <constraint firstItem="JP7-q2-YQp" firstAttribute="centerY" secondItem="oal-UG-xTF" secondAttribute="centerY" id="Pgj-KJ-xXF"/>
+                            <constraint firstItem="j7J-UC-SA2" firstAttribute="top" secondItem="oal-UG-xTF" secondAttribute="bottom" constant="44" id="TBt-XP-w5W"/>
+                            <constraint firstItem="JP7-q2-YQp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" multiplier="0.831" id="Vmt-FS-NEU"/>
+                            <constraint firstItem="vaT-qI-mrH" firstAttribute="top" secondItem="JP7-q2-YQp" secondAttribute="bottom" constant="10" id="Yu6-oc-Edp"/>
+                            <constraint firstItem="Sqm-xg-Ybr" firstAttribute="top" secondItem="JP7-q2-YQp" secondAttribute="bottom" constant="10" id="a5H-9h-VDL"/>
+                            <constraint firstItem="Ma1-EC-F9m" firstAttribute="centerX" secondItem="Sqm-xg-Ybr" secondAttribute="centerX" id="adf-lD-aiL"/>
+                            <constraint firstItem="TTk-kK-UdD" firstAttribute="leading" secondItem="oal-UG-xTF" secondAttribute="trailing" id="al3-SD-jdN"/>
+                            <constraint firstItem="iFh-cn-JRa" firstAttribute="top" secondItem="oal-UG-xTF" secondAttribute="bottom" constant="10" id="bwC-Ay-vJ7"/>
+                            <constraint firstItem="YQs-Cl-ggR" firstAttribute="centerX" secondItem="vaT-qI-mrH" secondAttribute="centerX" id="dxw-kp-DCf"/>
+                            <constraint firstItem="Fo0-YX-AJ4" firstAttribute="centerX" secondItem="JP7-q2-YQp" secondAttribute="centerX" id="gBc-Ao-Tk0"/>
+                            <constraint firstItem="oal-UG-xTF" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" multiplier="0.13451" id="n5m-KF-AGa"/>
+                            <constraint firstItem="Sqm-xg-Ybr" firstAttribute="leading" secondItem="JP7-q2-YQp" secondAttribute="trailing" constant="3" id="nBF-3o-4gC"/>
+                            <constraint firstItem="oal-UG-xTF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" multiplier="0.28" id="nEj-gI-AaH"/>
+                            <constraint firstItem="JP7-q2-YQp" firstAttribute="leading" secondItem="vaT-qI-mrH" secondAttribute="trailing" constant="5" id="rkt-An-LA2"/>
+                            <constraint firstItem="oal-UG-xTF" firstAttribute="centerX" secondItem="Jep-1v-avd" secondAttribute="centerX" id="tRF-gy-Aim"/>
+                            <constraint firstItem="oal-UG-xTF" firstAttribute="leading" secondItem="iFh-cn-JRa" secondAttribute="trailing" constant="2" id="vAt-AA-PDL"/>
+                            <constraint firstItem="TTk-kK-UdD" firstAttribute="top" secondItem="oal-UG-xTF" secondAttribute="bottom" constant="10" id="xPJ-Ae-MLM"/>
+                            <constraint firstItem="j7J-UC-SA2" firstAttribute="centerX" secondItem="iFh-cn-JRa" secondAttribute="centerX" id="yiK-EJ-aQe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="nEj-gI-AaH"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="leftButton" destination="iFh-cn-JRa" id="tNJ-gE-v5m"/>
                         <outlet property="playButton" destination="oal-UG-xTF" id="p5k-Sa-lh0"/>
                         <outlet property="rightButton" destination="TTk-kK-UdD" id="2eq-5l-tiX"/>
+                        <outlet property="secondLeftButton" destination="vaT-qI-mrH" id="jzS-Eu-i87"/>
+                        <outlet property="secondPlayButton" destination="JP7-q2-YQp" id="ZNm-5z-jqa"/>
+                        <outlet property="secondRightButton" destination="Sqm-xg-Ybr" id="M1I-4b-d2h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
