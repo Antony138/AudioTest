@@ -18,6 +18,7 @@
 		CF3613371BDDD54C001400EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF3613351BDDD54C001400EE /* LaunchScreen.storyboard */; };
 		CF3613421BDDD54D001400EE /* AudioTest20151026Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3613411BDDD54D001400EE /* AudioTest20151026Tests.m */; };
 		CF36134D1BDDD54D001400EE /* AudioTest20151026UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CF36134C1BDDD54D001400EE /* AudioTest20151026UITests.m */; };
+		CF46E9B31C003A40002111CE /* leftRightTest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CF46E9B21C003A40002111CE /* leftRightTest.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		CF3613481BDDD54D001400EE /* AudioTest20151026UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioTest20151026UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF36134C1BDDD54D001400EE /* AudioTest20151026UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioTest20151026UITests.m; sourceTree = "<group>"; };
 		CF36134E1BDDD54D001400EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF46E9B21C003A40002111CE /* leftRightTest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = leftRightTest.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		CF3613271BDDD54C001400EE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF46E9B21C003A40002111CE /* leftRightTest.mp3 */,
 				CF1C648A1BE07A1C0005AC87 /* 遇见.mp3 */,
 				CF1C64881BE079A00005AC87 /* 勇气.mp3 */,
 				CF1C64851BDE30AE0005AC87 /* marimbaLoop.caf */,
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF46E9B31C003A40002111CE /* leftRightTest.mp3 in Resources */,
 				CF1C64891BE079A00005AC87 /* 勇气.mp3 in Resources */,
 				CF3613371BDDD54C001400EE /* LaunchScreen.storyboard in Resources */,
 				CF3613341BDDD54C001400EE /* Assets.xcassets in Resources */,
